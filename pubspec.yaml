@@ -1,0 +1,13 @@
+name: moceansdk
+version: 1.0.0
+authors:
+  - Micro Ocean Technologies Sdn Bhd <support@moceanapi.com>
+homepage: http://moceanapi.com
+repository: https://github.com/MoceanAPI/mocean-sdk-dart
+description: Dart client for MoceanAPI
+
+environment:
+  sdk: '>=2.4.0 <3.0.0'
+
+dependencies:
+  http: ^0.12.0+2

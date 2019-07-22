@@ -1,0 +1,1 @@
+enum Channel { AUTO, SMS }
