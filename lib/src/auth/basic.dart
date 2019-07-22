@@ -3,7 +3,7 @@ import 'package:moceansdk/src/auth/auth_interface.dart';
 class Basic implements AuthInterface {
   Map params;
 
-  Basic([String apiKey = null, String apiSecret = null]) {
+  Basic([String apiKey, String apiSecret]) {
     this.params = Map();
 
     if (apiKey != null) {

@@ -6,9 +6,13 @@ class VerifyCode extends AbstractClient {
   VerifyCode(AuthInterface objAuth, Transmitter transmitter)
       : super(objAuth, transmitter);
 
-  void set reqId(String value) => this.params['mocean-reqid'] = value;
+  void set reqId(String value) {
+    this.params['mocean-reqid'] = value;
+  }
 
-  void set code(String value) => this.params['mocean-code'] = value;
+  void set code(String value) {
+    this.params['mocean-code'] = value;
+  }
 
   Future send([Map params = null]) async {
     if (params != null) {

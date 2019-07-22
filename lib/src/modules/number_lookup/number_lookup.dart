@@ -6,9 +6,13 @@ class NumberLookup extends AbstractClient {
   NumberLookup(AuthInterface objAuth, Transmitter transmitter)
       : super(objAuth, transmitter);
 
-  void set to(String value) => this.params['mocean-to'] = value;
+  void set to(String value) {
+    this.params['mocean-to'] = value;
+  }
 
-  void set nlUrl(String value) => this.params['mocean-nl-url'] = value;
+  void set nlUrl(String value) {
+    this.params['mocean-nl-url'] = value;
+  }
 
   Future inquiry([Map params = null]) async {
     if (params != null) {
