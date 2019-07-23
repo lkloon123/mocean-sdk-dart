@@ -1,10 +1,13 @@
 class MoceanErrorException implements Exception {
-  String errMsg;
+  String _errMsg;
+  Map _errorResponse;
 
-  MoceanErrorException(this.errMsg);
+  MoceanErrorException(this._errMsg, [this._errorResponse]);
+
+  Map get errorResponse => this._errorResponse;
 
   String toString() {
-    if (errMsg == null) return this.runtimeType.toString();
-    return "${this.runtimeType.toString()}: ${errMsg}";
+    if (this._errMsg == null) return this.runtimeType.toString();
+    return "${this.runtimeType.toString()}: ${this._errMsg}";
   }
 }

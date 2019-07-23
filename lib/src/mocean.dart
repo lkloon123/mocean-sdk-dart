@@ -15,7 +15,7 @@ class Mocean {
   AuthInterface _objAuth;
   Transmitter _transmitter;
 
-  Mocean(AuthInterface objAuth, [Transmitter transmitter = null]) {
+  Mocean(AuthInterface objAuth, [Transmitter transmitter]) {
     if (transmitter == null) {
       transmitter = Transmitter();
     }

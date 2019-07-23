@@ -4,11 +4,14 @@ import 'package:moceansdk/src/modules/abstract_client.dart';
 import 'package:moceansdk/src/modules/message/channel.dart';
 
 class SendCode extends AbstractClient {
-  Channel _channel = Channel.AUTO;
-  bool _isResend = false;
+  Channel _channel;
+  bool _isResend;
 
   SendCode(AuthInterface objAuth, Transmitter transmitter)
-      : super(objAuth, transmitter);
+      : super(objAuth, transmitter) {
+    this._channel = Channel.AUTO;
+    this._isResend = false;
+  }
 
   void set to(String value) {
     this.params['mocean-to'] = value;
@@ -42,7 +45,7 @@ class SendCode extends AbstractClient {
     this._channel = channel;
   }
 
-  Future send([Map params = null]) async {
+  Future send([Map params]) async {
     if (params != null) {
       this.create(params);
     }
@@ -62,7 +65,7 @@ class SendCode extends AbstractClient {
     return await this.transmitter.post(sendCodeUrl, this.params);
   }
 
-  Future resend([Map params = null]) async {
+  Future resend([Map params]) async {
     this
       .._isResend = true
       ..sendAs = Channel.SMS;

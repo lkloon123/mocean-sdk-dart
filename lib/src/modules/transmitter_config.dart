@@ -1,14 +1,17 @@
 class TransmitterConfig {
-  String _baseUrl = 'https://rest.moceanapi.com';
-  String _version = '2';
+  String _baseUrl;
+  String _version;
 
-  TransmitterConfig([String baseUrl = null, String version = null]) {
-    if (baseUrl != null) {
-      this._baseUrl = baseUrl;
+  TransmitterConfig([String baseUrl, String version]) {
+    if (baseUrl == null) {
+      baseUrl = 'https://rest.moceanapi.com';
     }
-    if (version != null) {
-      this._version = version;
+    if (version == null) {
+      version = '2';
     }
+
+    this._baseUrl = baseUrl;
+    this._version = version;
   }
 
   static TransmitterConfig make() => TransmitterConfig();

@@ -14,7 +14,7 @@ class NumberLookup extends AbstractClient {
     this.params['mocean-nl-url'] = value;
   }
 
-  Future inquiry([Map params = null]) async {
+  Future inquiry([Map params]) async {
     if (params != null) {
       this.create(params);
     }

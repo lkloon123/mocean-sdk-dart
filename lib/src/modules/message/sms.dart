@@ -54,7 +54,7 @@ class Sms extends AbstractClient {
     this.params['mocean-validity'] = value;
   }
 
-  Future send([Map params = null]) async {
+  Future send([Map params]) async {
     if (params != null) {
       this.create(params);
     }

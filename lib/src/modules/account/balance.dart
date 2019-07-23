@@ -6,7 +6,7 @@ class Balance extends AbstractClient {
   Balance(AuthInterface objAuth, Transmitter transmitter)
       : super(objAuth, transmitter);
 
-  Future inquiry([Map params = null]) async {
+  Future inquiry([Map params]) async {
     if (params != null) {
       this.create(params);
     }
