@@ -8,8 +8,8 @@ abstract class AbstractClient {
   AuthInterface objAuth;
   Transmitter transmitter;
 
-  AbstractClient(AuthInterface this.objAuth, Transmitter this.transmitter) {
-    this.params = objAuth.getParams();
+  AbstractClient(this.objAuth, this.transmitter) {
+    this.params = this.objAuth.getParams();
   }
 
   void create(params) {
