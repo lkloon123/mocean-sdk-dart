@@ -13,10 +13,23 @@ matrix:
 
 before_script: pub get
 
-script: pub run test_coverage
+script:
+  - pub run test_coverage
+  - pub publish --dry-run
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+before_deploy:
+  - chmod +x './publish.sh'
+  - mv ./publish.sh ../
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: '../publish.sh'
+  on:
+    tags: true
 
 cache:
   directories:
