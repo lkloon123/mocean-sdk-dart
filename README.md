@@ -3,7 +3,7 @@ MoceanAPI Client Library for Dart
 [![Latest Stable Version](https://img.shields.io/pub/v/moceansdk.svg)](https://pub.dev/packages/moceansdk)
 [![Build Status](https://img.shields.io/travis/com/MoceanAPI/mocean-sdk-dart.svg)](https://travis-ci.com/MoceanAPI/mocean-sdk-dart)
 [![codecov](https://img.shields.io/codecov/c/github/MoceanAPI/mocean-sdk-dart.svg)](https://codecov.io/gh/MoceanAPI/mocean-sdk-dart)
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 This is the Dart library for use Mocean's API. To use this, you'll need a Mocean account. Sign up [for free at 
 moceanapi.com][signup].

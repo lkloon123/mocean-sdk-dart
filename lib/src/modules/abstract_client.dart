@@ -12,9 +12,8 @@ abstract class AbstractClient {
     this.params = objAuth.getParams();
   }
 
-  AbstractClient create(params) {
+  void create(params) {
     this.params.addAll(params);
-    return this;
   }
 
   void isRequiredFieldSet() {

@@ -26,8 +26,7 @@ class Mocean {
     if (this._objAuth.getAuthMethod() == 'basic') {
       if (Utils.isNullOrEmpty(this._objAuth.getParams()['mocean-api-key']) ||
           Utils.isNullOrEmpty(this._objAuth.getParams()['mocean-api-secret'])) {
-        throw RequiredFieldException(
-            "api key and api secret can't be empty");
+        throw RequiredFieldException("api key and api secret can't be empty");
       }
     } else {
       throw MoceanErrorException('unsupported auth method');

@@ -6,11 +6,11 @@ class NumberLookup extends AbstractClient {
   NumberLookup(AuthInterface objAuth, Transmitter transmitter)
       : super(objAuth, transmitter);
 
-  void set to(String value) {
+  set to(String value) {
     this.params['mocean-to'] = value;
   }
 
-  void set nlUrl(String value) {
+  set nlUrl(String value) {
     this.params['mocean-nl-url'] = value;
   }
 

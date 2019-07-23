@@ -18,13 +18,13 @@ class TransmitterConfig {
 
   String get baseUrl => _baseUrl;
 
-  void set baseUrl(String value) {
+  set baseUrl(String value) {
     this._baseUrl = value;
   }
 
   String get version => _version;
 
-  void set version(String value) {
+  set version(String value) {
     this._version = value;
   }
 }

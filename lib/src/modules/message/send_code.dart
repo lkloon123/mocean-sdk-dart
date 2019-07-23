@@ -13,35 +13,35 @@ class SendCode extends AbstractClient {
     this._isResend = false;
   }
 
-  void set to(String value) {
+  set to(String value) {
     this.params['mocean-to'] = value;
   }
 
-  void set brand(String value) {
+  set brand(String value) {
     this.params['mocean-brand'] = value;
   }
 
-  void set from(String value) {
+  set from(String value) {
     this.params['mocean-from'] = value;
   }
 
-  void set codeLength(String value) {
+  set codeLength(String value) {
     this.params['mocean-code-length'] = value;
   }
 
-  void set pinValidity(String value) {
+  set pinValidity(String value) {
     this.params['mocean-pin-validity'] = value;
   }
 
-  void set nextEventWait(String value) {
+  set nextEventWait(String value) {
     this.params['mocean-next-event-wait'] = value;
   }
 
-  void set reqId(String value) {
+  set reqId(String value) {
     this.params['mocean-reqid'] = value;
   }
 
-  void set sendAs(Channel channel) {
+  set sendAs(Channel channel) {
     this._channel = channel;
   }
 

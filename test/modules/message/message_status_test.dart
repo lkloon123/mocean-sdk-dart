@@ -30,7 +30,8 @@ main() {
     test('inquiry', () async {
       var transmitterMock = Transmitter(
           null,
-          TestingUtils.getMockHttpClient('message_status.json', (Request request) {
+          TestingUtils.getMockHttpClient('message_status.json',
+              (Request request) {
             expect(request.method, equalsIgnoringCase('get'));
             expect(request.url.path,
                 equals(TestingUtils.getTestUri('/report/message')));

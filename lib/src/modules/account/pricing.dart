@@ -6,15 +6,15 @@ class Pricing extends AbstractClient {
   Pricing(AuthInterface objAuth, Transmitter transmitter)
       : super(objAuth, transmitter);
 
-  void set mcc(String value) {
+  set mcc(String value) {
     this.params['mocean-mcc'] = value;
   }
 
-  void set mnc(String value) {
+  set mnc(String value) {
     this.params['mocean-mnc'] = value;
   }
 
-  void set delimiter(String value) {
+  set delimiter(String value) {
     this.params['mocean-delimiter'] = value;
   }
 

@@ -15,11 +15,11 @@ class Basic implements AuthInterface {
     }
   }
 
-  void set apiKey(String apiKey) {
+  set apiKey(String apiKey) {
     this.params['mocean-api-key'] = apiKey;
   }
 
-  void set apiSecret(String apiSecret) {
+  set apiSecret(String apiSecret) {
     this.params['mocean-api-secret'] = apiSecret;
   }
 

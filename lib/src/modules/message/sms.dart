@@ -6,51 +6,51 @@ class Sms extends AbstractClient {
   Sms(AuthInterface objAuth, Transmitter transmitter)
       : super(objAuth, transmitter);
 
-  void set from(String value) {
+  set from(String value) {
     this.params['mocean-from'] = value;
   }
 
-  void set to(String value) {
+  set to(String value) {
     this.params['mocean-to'] = value;
   }
 
-  void set text(String value) {
+  set text(String value) {
     this.params['mocean-text'] = value;
   }
 
-  void set udh(String value) {
+  set udh(String value) {
     this.params['mocean-udh'] = value;
   }
 
-  void set coding(String value) {
+  set coding(String value) {
     this.params['mocean-coding'] = value;
   }
 
-  void set dlrMask(String value) {
+  set dlrMask(String value) {
     this.params['mocean-dlr-mask'] = value;
   }
 
-  void set dlrUrl(String value) {
+  set dlrUrl(String value) {
     this.params['mocean-dlr-url'] = value;
   }
 
-  void set schedule(String value) {
+  set schedule(String value) {
     this.params['mocean-schedule'] = value;
   }
 
-  void set mClass(String value) {
+  set mClass(String value) {
     this.params['mocean-mclass'] = value;
   }
 
-  void set altDcs(String value) {
+  set altDcs(String value) {
     this.params['mocean-alt-dcs'] = value;
   }
 
-  void set charSet(String value) {
+  set charSet(String value) {
     this.params['mocean-charset'] = value;
   }
 
-  void set validity(String value) {
+  set validity(String value) {
     this.params['mocean-validity'] = value;
   }
 
