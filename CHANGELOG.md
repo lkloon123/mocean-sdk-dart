@@ -1,3 +1,7 @@
+## [1.1.1](http://github.com/MoceanAPI/mocean-sdk-dart/compare/1.1.0...1.1.1)
+
+- Fix code analytics sugguestions [4ddb086](https://gitub.com/MoceanAPI/mocean-sdk-dart/commit/4ddb086c8740ef9ef5dca79ba0db3bb69f3b954d)
+
 ## 1.1.0
 
 - Add example [5623e7f](https://gitub.com/MoceanAPI/mocean-sdk-dart/commit/5623e7f484670a8c25818b9b0497095d6f42dd53)
