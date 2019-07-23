@@ -30,6 +30,7 @@ deploy:
   script: '../publish.sh'
   on:
     tags: true
+    dart: stable
 
 cache:
   directories:
