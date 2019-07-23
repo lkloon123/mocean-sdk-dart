@@ -7,7 +7,12 @@ repository: https://github.com/MoceanAPI/mocean-sdk-dart
 description: SDK Library Dart to send SMS for FREE using MoceanAPI sms solution.
 
 environment:
-  sdk: '>=2.4.0 <3.0.0'
+  sdk: '>=2.1.0 <3.0.0'
 
 dependencies:
   http: ^0.12.0+2
+
+dev_dependencies:
+  test: '>=1.3.0 <2.0.0'
+  mockito: ^4.1.0
+  test_coverage: ^0.2.0
