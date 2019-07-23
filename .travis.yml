@@ -1,0 +1,23 @@
+language: dart
+
+matrix:
+  include:
+    - dart: 2.1.1
+    - dart: 2.2.0
+    - dart: 2.3.2
+    - dart: 2.4.0
+    - dart: stable
+    - dart: dev
+  allow_failures:
+    - dart: dev
+
+before_script: pub get
+
+script: pub run test_coverage
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+cache:
+  directories:
+    - $HOME/.pub-cache
