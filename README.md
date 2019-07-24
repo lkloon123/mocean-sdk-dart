@@ -27,7 +27,7 @@ Create a client with your API key and secret
 import 'package:moceansdk/moceansdk.dart';
 
 var mocean = Mocean(
-  Basic('your api key', 'your api secret'),
+  Basic('your api key', 'your api secret')
 );
 ```
 
