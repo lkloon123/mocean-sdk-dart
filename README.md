@@ -81,4 +81,4 @@ This library is released under the [MIT License][license]
 [signup]: https://dashboard.moceanapi.com/register?medium=github&campaign=sdk-go
 [doc_main]: https://moceanapi.com/docs/?dart
 [doc_sms]: https://moceanapi.com/docs/?dart#send-sms
-[license]: LICENSE
+[license]: LICENSE.txt
