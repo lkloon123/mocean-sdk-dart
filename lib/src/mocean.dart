@@ -8,6 +8,7 @@ import 'package:moceansdk/src/modules/message/sms.dart';
 import 'package:moceansdk/src/modules/message/verify_code.dart';
 import 'package:moceansdk/src/modules/number_lookup/number_lookup.dart';
 import 'package:moceansdk/src/modules/transmitter.dart';
+import 'package:moceansdk/src/modules/voice/voice.dart';
 import 'package:moceansdk/src/utils.dart';
 import 'package:moceansdk/src/auth/auth_interface.dart';
 
@@ -46,4 +47,6 @@ class Mocean {
 
   NumberLookup get numberLookup =>
       NumberLookup(this._objAuth, this._transmitter);
+
+  Voice get voice => Voice(this._objAuth, this._transmitter);
 }
