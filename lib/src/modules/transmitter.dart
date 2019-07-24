@@ -10,13 +10,8 @@ class Transmitter {
   http.Client _httpClient;
 
   Transmitter([TransmitterConfig transmitterConfig, http.Client httpClient]) {
-    if (transmitterConfig == null) {
-      transmitterConfig = TransmitterConfig.make();
-    }
-
-    if (httpClient == null) {
-      httpClient = http.Client();
-    }
+    transmitterConfig ??= TransmitterConfig.make();
+    httpClient ??= http.Client();
 
     this._httpClient = httpClient;
     this._transmitterConfig = transmitterConfig;

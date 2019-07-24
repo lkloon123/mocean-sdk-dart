@@ -3,12 +3,8 @@ class TransmitterConfig {
   String _version;
 
   TransmitterConfig([String baseUrl, String version]) {
-    if (baseUrl == null) {
-      baseUrl = 'https://rest.moceanapi.com';
-    }
-    if (version == null) {
-      version = '2';
-    }
+    baseUrl ??= 'https://rest.moceanapi.com';
+    version ??= '2';
 
     this._baseUrl = baseUrl;
     this._version = version;
