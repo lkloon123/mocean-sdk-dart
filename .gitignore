@@ -112,3 +112,5 @@ modules.xml
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/dart,jetbrains+all
+
+coverage/
