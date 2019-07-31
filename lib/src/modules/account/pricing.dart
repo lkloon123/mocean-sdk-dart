@@ -3,8 +3,10 @@ import 'package:moceansdk/src/modules/abstract_client.dart';
 import 'package:moceansdk/src/modules/transmitter.dart';
 
 class Pricing extends AbstractClient {
-  Pricing(AuthInterface objAuth, Transmitter transmitter)
-      : super(objAuth, transmitter);
+  Pricing(
+    AuthInterface objAuth,
+    Transmitter transmitter,
+  ) : super(objAuth, transmitter);
 
   set mcc(String value) {
     this.params['mocean-mcc'] = value;

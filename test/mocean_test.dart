@@ -11,18 +11,30 @@ void main() {
 
   group('Test Client', () {
     test('client creation error when no api key or api secret', () {
-      expect(() => Mocean(Basic()),
-          throwsA(TypeMatcher<RequiredFieldException>()));
-      expect(() => Mocean(Basic('', '')),
-          throwsA(TypeMatcher<RequiredFieldException>()));
-      expect(() => Mocean(Basic('test api key', '')),
-          throwsA(TypeMatcher<RequiredFieldException>()));
-      expect(() => Mocean(Basic('', 'test api secret')),
-          throwsA(TypeMatcher<RequiredFieldException>()));
-      expect(() => Mocean(Basic('test api key', null)),
-          throwsA(TypeMatcher<RequiredFieldException>()));
-      expect(() => Mocean(Basic(null, 'test api secret')),
-          throwsA(TypeMatcher<RequiredFieldException>()));
+      expect(
+        () => Mocean(Basic()),
+        throwsA(TypeMatcher<RequiredFieldException>()),
+      );
+      expect(
+        () => Mocean(Basic('', '')),
+        throwsA(TypeMatcher<RequiredFieldException>()),
+      );
+      expect(
+        () => Mocean(Basic('test api key', '')),
+        throwsA(TypeMatcher<RequiredFieldException>()),
+      );
+      expect(
+        () => Mocean(Basic('', 'test api secret')),
+        throwsA(TypeMatcher<RequiredFieldException>()),
+      );
+      expect(
+        () => Mocean(Basic('test api key', null)),
+        throwsA(TypeMatcher<RequiredFieldException>()),
+      );
+      expect(
+        () => Mocean(Basic(null, 'test api secret')),
+        throwsA(TypeMatcher<RequiredFieldException>()),
+      );
     });
 
     test('able to construct mocean object', () {
@@ -34,8 +46,10 @@ void main() {
     });
 
     test('create client with unsupported auth', () {
-      expect(() => Mocean(DummyAuth()),
-          throwsA(TypeMatcher<MoceanErrorException>()));
+      expect(
+        () => Mocean(DummyAuth()),
+        throwsA(TypeMatcher<MoceanErrorException>()),
+      );
     });
   });
 }

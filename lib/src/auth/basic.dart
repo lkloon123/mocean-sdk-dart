@@ -1,26 +1,17 @@
 import 'package:moceansdk/src/auth/auth_interface.dart';
 
 class Basic implements AuthInterface {
-  Map params;
+  String _apiKey;
+  String _apiSecret;
 
-  Basic([String apiKey, String apiSecret]) {
-    this.params = Map();
-
-    if (apiKey != null) {
-      this.params['mocean-api-key'] = apiKey;
-    }
-
-    if (apiSecret != null) {
-      this.params['mocean-api-secret'] = apiSecret;
-    }
-  }
+  Basic([this._apiKey, this._apiSecret]);
 
   set apiKey(String apiKey) {
-    this.params['mocean-api-key'] = apiKey;
+    _apiKey = apiKey;
   }
 
   set apiSecret(String apiSecret) {
-    this.params['mocean-api-secret'] = apiSecret;
+    _apiSecret = apiSecret;
   }
 
   @override
@@ -30,6 +21,9 @@ class Basic implements AuthInterface {
 
   @override
   Map getParams() {
-    return this.params;
+    return {
+      'mocean-api-key': _apiKey,
+      'mocean-api-secret': _apiSecret,
+    };
   }
 }

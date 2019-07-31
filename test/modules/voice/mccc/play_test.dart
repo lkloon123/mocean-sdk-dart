@@ -5,7 +5,11 @@ import 'package:test/test.dart';
 main() {
   group('Test Play', () {
     test('params', () {
-      var params = {'file': 'testing file', 'barge-in': true, 'action': 'play'};
+      var params = {
+        'file': 'testing file',
+        'barge-in': true,
+        'action': 'play',
+      };
       expect(Play(params).requestData, equals(params));
 
       var play = Play();
@@ -16,7 +20,10 @@ main() {
     });
 
     test('if action auto defined', () {
-      var params = {'file': 'testing file', 'barge-in': true};
+      var params = {
+        'file': 'testing file',
+        'barge-in': true,
+      };
 
       expect(Play(params).requestData['action'], equals('play'));
     });

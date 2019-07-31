@@ -11,7 +11,7 @@ main() {
         'max': 10,
         'terminators': '#',
         'timeout': 10000,
-        'action': 'collect'
+        'action': 'collect',
       };
       expect(Collect(params).requestData, equals(params));
 
@@ -31,7 +31,7 @@ main() {
         'min': 1,
         'max': 10,
         'terminators': '#',
-        'timeout': 10000
+        'timeout': 10000,
       };
 
       expect(Collect(params).requestData['action'], equals('collect'));

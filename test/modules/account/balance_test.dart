@@ -19,12 +19,17 @@ main() {
   group('Test Balance', () {
     test('inquiry', () async {
       var transmitterMock = Transmitter(
-          null,
-          TestingUtils.getMockHttpClient('balance.json', (Request request) {
+        httpClient: TestingUtils.getMockHttpClient(
+          'balance.json',
+          (Request request) {
             expect(request.method, equalsIgnoringCase('get'));
-            expect(request.url.path,
-                equals(TestingUtils.getTestUri('/account/balance')));
-          }));
+            expect(
+              request.url.path,
+              equals(TestingUtils.getTestUri('/account/balance')),
+            );
+          },
+        ),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
       var res = await mocean.balance.inquiry({'mocean-resp-format': 'json'});

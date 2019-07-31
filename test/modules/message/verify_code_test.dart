@@ -31,23 +31,31 @@ main() {
 
     test('send', () async {
       var transmitterMock = Transmitter(
-          null,
-          TestingUtils.getMockHttpClient('verify_code.json', (Request request) {
+        httpClient: TestingUtils.getMockHttpClient(
+          'verify_code.json',
+          (Request request) {
             expect(request.method, equalsIgnoringCase('post'));
-            expect(request.url.path,
-                equals(TestingUtils.getTestUri('/verify/check')));
-          }));
+            expect(
+              request.url.path,
+              equals(TestingUtils.getTestUri('/verify/check')),
+            );
+          },
+        ),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
-      var res = await mocean.verifyCode
-          .send({'mocean-reqid': 'test reqid', 'mocean-code': 'test code'});
+      var res = await mocean.verifyCode.send({
+        'mocean-reqid': 'test reqid',
+        'mocean-code': 'test code',
+      });
 
       objectTest(res);
     });
 
     test('required field not set', () async {
-      var transmitterMock =
-          Transmitter(null, TestingUtils.getMockHttpClient('verify_code.json'));
+      var transmitterMock = Transmitter(
+        httpClient: TestingUtils.getMockHttpClient('verify_code.json'),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
 

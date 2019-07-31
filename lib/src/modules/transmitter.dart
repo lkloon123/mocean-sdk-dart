@@ -9,7 +9,7 @@ class Transmitter {
   TransmitterConfig _transmitterConfig;
   http.Client _httpClient;
 
-  Transmitter([TransmitterConfig transmitterConfig, http.Client httpClient]) {
+  Transmitter({TransmitterConfig transmitterConfig, http.Client httpClient}) {
     transmitterConfig ??= TransmitterConfig.make();
     httpClient ??= http.Client();
 

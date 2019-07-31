@@ -5,7 +5,11 @@ import 'package:test/test.dart';
 main() {
   group('Test Sleep', () {
     test('params', () {
-      var params = {'duration': 10000, 'barge-in': true, 'action': 'sleep'};
+      var params = {
+        'duration': 10000,
+        'barge-in': true,
+        'action': 'sleep',
+      };
       expect(Sleep(params).requestData, equals(params));
 
       var sleep = Sleep();
@@ -16,7 +20,10 @@ main() {
     });
 
     test('if action auto defined', () {
-      var params = {'duration': 10000, 'barge-in': true};
+      var params = {
+        'duration': 10000,
+        'barge-in': true,
+      };
 
       expect(Sleep(params).requestData['action'], equals('sleep'));
     });

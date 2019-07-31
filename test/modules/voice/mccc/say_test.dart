@@ -9,7 +9,7 @@ main() {
         'language': 'testing language',
         'text': 'testing text',
         'barge-in': true,
-        'action': 'say'
+        'action': 'say',
       };
       expect(Say(params).requestData, equals(params));
 
@@ -25,7 +25,7 @@ main() {
       var params = {
         'language': 'testing language',
         'text': 'testing text',
-        'barge-in': true
+        'barge-in': true,
       };
 
       expect(Say(params).requestData['action'], equals('say'));

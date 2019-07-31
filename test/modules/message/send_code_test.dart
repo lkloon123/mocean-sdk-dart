@@ -39,12 +39,16 @@ main() {
       sendCode.pinValidity = 'test pinValidity';
       expect(sendCode.params['mocean-pin-validity'], isNotNull);
       expect(
-          sendCode.params['mocean-pin-validity'], equals('test pinValidity'));
+        sendCode.params['mocean-pin-validity'],
+        equals('test pinValidity'),
+      );
 
       sendCode.nextEventWait = 'test nextEventWait';
       expect(sendCode.params['mocean-next-event-wait'], isNotNull);
-      expect(sendCode.params['mocean-next-event-wait'],
-          equals('test nextEventWait'));
+      expect(
+        sendCode.params['mocean-next-event-wait'],
+        equals('test nextEventWait'),
+      );
 
       sendCode.reqId = 'test reqId';
       expect(sendCode.params['mocean-reqid'], isNotNull);
@@ -53,47 +57,66 @@ main() {
 
     test('send', () async {
       var transmitterMock = Transmitter(
-          null,
-          TestingUtils.getMockHttpClient('send_code.json', (Request request) {
+        httpClient: TestingUtils.getMockHttpClient(
+          'send_code.json',
+          (Request request) {
             expect(request.method, equalsIgnoringCase('post'));
-            expect(request.url.path,
-                equals(TestingUtils.getTestUri('/verify/req')));
-          }));
+            expect(
+              request.url.path,
+              equals(TestingUtils.getTestUri('/verify/req')),
+            );
+          },
+        ),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
-      var res = await mocean.sendCode
-          .send({'mocean-to': 'test to', 'mocean-brand': 'test brand'});
+      var res = await mocean.sendCode.send({
+        'mocean-to': 'test to',
+        'mocean-brand': 'test brand',
+      });
 
       objectTest(res);
     });
 
     test('send as sms channel', () async {
       var transmitterMock = Transmitter(
-          null,
-          TestingUtils.getMockHttpClient('send_code.json', (Request request) {
+        httpClient: TestingUtils.getMockHttpClient(
+          'send_code.json',
+          (Request request) {
             expect(request.method, equalsIgnoringCase('post'));
-            expect(request.url.path,
-                equals(TestingUtils.getTestUri('/verify/req/sms')));
-          }));
+            expect(
+              request.url.path,
+              equals(TestingUtils.getTestUri('/verify/req/sms')),
+            );
+          },
+        ),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
       var sendCode = mocean.sendCode;
       sendCode.sendAs = Channel.SMS;
 
-      var res = await sendCode
-          .send({'mocean-to': 'test to', 'mocean-brand': 'test brand'});
+      var res = await sendCode.send({
+        'mocean-to': 'test to',
+        'mocean-brand': 'test brand',
+      });
 
       objectTest(res);
     });
 
     test('test resend', () async {
       var transmitterMock = Transmitter(
-          null,
-          TestingUtils.getMockHttpClient('send_code.json', (Request request) {
+        httpClient: TestingUtils.getMockHttpClient(
+          'send_code.json',
+          (Request request) {
             expect(request.method, equalsIgnoringCase('post'));
-            expect(request.url.path,
-                equals(TestingUtils.getTestUri('/verify/resend/sms')));
-          }));
+            expect(
+              request.url.path,
+              equals(TestingUtils.getTestUri('/verify/resend/sms')),
+            );
+          },
+        ),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
 
@@ -103,8 +126,9 @@ main() {
     });
 
     test('required field not set', () async {
-      var transmitterMock =
-          Transmitter(null, TestingUtils.getMockHttpClient('send_code.json'));
+      var transmitterMock = Transmitter(
+        httpClient: TestingUtils.getMockHttpClient('send_code.json'),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
 

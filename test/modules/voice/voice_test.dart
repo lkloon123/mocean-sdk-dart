@@ -29,62 +29,77 @@ main() {
 
       voice.callControlCommands = 'test callControlCommands';
       expect(voice.params['mocean-call-control-commands'], isNotNull);
-      expect(voice.params['mocean-call-control-commands'],
-          equals('test callControlCommands'));
+      expect(
+        voice.params['mocean-call-control-commands'],
+        equals('test callControlCommands'),
+      );
 
       voice.callEventUrl = 'test callEventUrl';
       expect(voice.params['mocean-call-event-url'], isNotNull);
       expect(
-          voice.params['mocean-call-event-url'], equals('test callEventUrl'));
+        voice.params['mocean-call-event-url'],
+        equals('test callEventUrl'),
+      );
 
       // test multiple call control commands
       voice = mocean.voice;
       voice.callControlCommands = [
-        {'action': 'say'}
+        {'action': 'say'},
       ];
       expect(voice.params['mocean-call-control-commands'], isNotNull);
       expect(
-          voice.params['mocean-call-control-commands'],
-          equals(json.encode([
-            {'action': 'say'}
-          ])));
+        voice.params['mocean-call-control-commands'],
+        equals(json.encode([
+          {'action': 'say'},
+        ])),
+      );
 
       voice = mocean.voice;
       var builderParams = McccBuilder().add(Mccc.say('hello world'));
       voice.callControlCommands = builderParams;
       expect(voice.params['mocean-call-control-commands'], isNotNull);
-      expect(voice.params['mocean-call-control-commands'],
-          equals(json.encode(builderParams.build())));
+      expect(
+        voice.params['mocean-call-control-commands'],
+        equals(json.encode(builderParams.build())),
+      );
 
       voice = mocean.voice;
       var mcccParams = Mccc.say('hello world');
       voice.callControlCommands = mcccParams;
       expect(voice.params['mocean-call-control-commands'], isNotNull);
-      expect(voice.params['mocean-call-control-commands'],
-          equals(json.encode(McccBuilder().add(mcccParams).build())));
+      expect(
+        voice.params['mocean-call-control-commands'],
+        equals(json.encode(McccBuilder().add(mcccParams).build())),
+      );
     });
 
     test('call', () async {
       var transmitterMock = Transmitter(
-          null,
-          TestingUtils.getMockHttpClient('voice.json', (Request request) {
+        httpClient: TestingUtils.getMockHttpClient(
+          'voice.json',
+          (Request request) {
             expect(request.method, equalsIgnoringCase('get'));
-            expect(request.url.path,
-                equals(TestingUtils.getTestUri('/voice/dial')));
-          }));
+            expect(
+              request.url.path,
+              equals(TestingUtils.getTestUri('/voice/dial')),
+            );
+          },
+        ),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
       var res = await mocean.voice.call({
         'mocean-to': 'test to',
-        'mocean-call-control-commands': 'test call control commands'
+        'mocean-call-control-commands': 'test call control commands',
       });
 
       objectTest(res);
     });
 
     test('required field not set', () async {
-      var transmitterMock =
-          Transmitter(null, TestingUtils.getMockHttpClient('voice.json'));
+      var transmitterMock = Transmitter(
+        httpClient: TestingUtils.getMockHttpClient('voice.json'),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
 

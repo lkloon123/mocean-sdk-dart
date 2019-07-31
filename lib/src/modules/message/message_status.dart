@@ -3,8 +3,10 @@ import 'package:moceansdk/src/modules/abstract_client.dart';
 import 'package:moceansdk/src/modules/transmitter.dart';
 
 class MessageStatus extends AbstractClient {
-  MessageStatus(AuthInterface objAuth, Transmitter transmitter)
-      : super(objAuth, transmitter);
+  MessageStatus(
+    AuthInterface objAuth,
+    Transmitter transmitter,
+  ) : super(objAuth, transmitter);
 
   set msgId(String value) {
     this.params['mocean-msgid'] = value;

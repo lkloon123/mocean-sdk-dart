@@ -14,8 +14,10 @@ main() {
       say.text = 'testing text';
       expect(say.requestData['text'], equals('testing text'));
 
-      expect(Mccc.say('testing text2').requestData['text'],
-          equals('testing text2'));
+      expect(
+        Mccc.say('testing text2').requestData['text'],
+        equals('testing text2'),
+      );
     });
 
     test('mccc bridge', () {
@@ -30,7 +32,9 @@ main() {
       expect(bridge.requestData['to'], equals('testing to'));
 
       expect(
-          Mccc.bridge('testing to2').requestData['to'], equals('testing to2'));
+        Mccc.bridge('testing to2').requestData['to'],
+        equals('testing to2'),
+      );
     });
 
     test('mccc collect', () {
@@ -44,8 +48,10 @@ main() {
       collect.eventUrl = 'testing eventUrl';
       expect(collect.requestData['event-url'], equals('testing eventUrl'));
 
-      expect(Mccc.collect('testing eventUrl2').requestData['event-url'],
-          equals('testing eventUrl2'));
+      expect(
+        Mccc.collect('testing eventUrl2').requestData['event-url'],
+        equals('testing eventUrl2'),
+      );
     });
 
     test('mccc play', () {
@@ -59,8 +65,10 @@ main() {
       play.files = 'testing file';
       expect(play.requestData['file'], equals('testing file'));
 
-      expect(Mccc.play('testing file2').requestData['file'],
-          equals('testing file2'));
+      expect(
+        Mccc.play('testing file2').requestData['file'],
+        equals('testing file2'),
+      );
     });
 
     test('mccc sleep', () {

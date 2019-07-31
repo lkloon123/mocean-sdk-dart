@@ -3,8 +3,10 @@ import 'package:moceansdk/src/auth/auth_interface.dart';
 import 'package:moceansdk/src/modules/abstract_client.dart';
 
 class VerifyCode extends AbstractClient {
-  VerifyCode(AuthInterface objAuth, Transmitter transmitter)
-      : super(objAuth, transmitter);
+  VerifyCode(
+    AuthInterface objAuth,
+    Transmitter transmitter,
+  ) : super(objAuth, transmitter);
 
   set reqId(String value) {
     this.params['mocean-reqid'] = value;
