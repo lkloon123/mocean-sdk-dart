@@ -1,20 +1,24 @@
 import 'package:moceansdk/moceansdk.dart';
-import 'package:moceansdk/src/modules/voice/mccc/bridge.dart';
+import 'package:moceansdk/src/modules/voice/mccc/dial.dart';
 import 'package:test/test.dart';
 
 main() {
-  group('Test Bridge', () {
+  group('Test Dial', () {
     test('params', () {
       var params = {
         'to': 'testing to',
+        'from': 'callerid',
+        'dial-sequentially': true,
         'action': 'dial',
       };
-      expect(Bridge(params).requestData, equals(params));
+      expect(Dial(params).requestData, equals(params));
 
-      var bridge = Bridge();
-      bridge.to = 'testing to';
+      var dial = Dial();
+      dial.to = 'testing to';
+      dial.from = 'callerid';
+      dial.dialSequentially = true;
 
-      expect(bridge.requestData, equals(params));
+      expect(dial.requestData, equals(params));
     });
 
     test('if action auto defined', () {
@@ -22,12 +26,12 @@ main() {
         'to': 'testing to',
       };
 
-      expect(Bridge(params).requestData['action'], equals('dial'));
+      expect(Dial(params).requestData['action'], equals('dial'));
     });
 
     test('if required field not set', () {
       try {
-        Bridge().requestData;
+        Dial().requestData;
         fail('passed when required field not set');
       } on RequiredFieldException {}
     });

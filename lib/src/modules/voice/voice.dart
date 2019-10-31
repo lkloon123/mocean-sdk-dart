@@ -42,13 +42,7 @@ class Voice extends AbstractClient {
     }
     this.isRequiredFieldSet();
 
-//    var temp = {};
-//    this.params.forEach((key, value) {
-//      temp[key.toString().replaceAll('mocean', 'gw')] = value;
-//    });
-//    this.params = temp;
-
-    return await this.transmitter.get('/voice/dial', this.params);
+    return await this.transmitter.post('/voice/dial', this.params);
   }
 
   @override

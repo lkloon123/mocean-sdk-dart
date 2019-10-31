@@ -8,6 +8,7 @@ main() {
       var params = {
         'file': 'testing file',
         'barge-in': true,
+        'clear-digit-cache': true,
         'action': 'play',
       };
       expect(Play(params).requestData, equals(params));
@@ -15,6 +16,7 @@ main() {
       var play = Play();
       play.files = 'testing file';
       play.bargeIn = true;
+      play.clearDigitCache = true;
 
       expect(play.requestData, equals(params));
     });

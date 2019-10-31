@@ -7,14 +7,12 @@ main() {
     test('params', () {
       var params = {
         'duration': 10000,
-        'barge-in': true,
         'action': 'sleep',
       };
       expect(Sleep(params).requestData, equals(params));
 
       var sleep = Sleep();
       sleep.duration = 10000;
-      sleep.bargeIn = true;
 
       expect(sleep.requestData, equals(params));
     });

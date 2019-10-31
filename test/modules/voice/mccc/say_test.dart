@@ -9,6 +9,7 @@ main() {
         'language': 'testing language',
         'text': 'testing text',
         'barge-in': true,
+        'clear-digit-cache': true,
         'action': 'say',
       };
       expect(Say(params).requestData, equals(params));
@@ -17,6 +18,7 @@ main() {
       say.language = 'testing language';
       say.text = 'testing text';
       say.bargeIn = true;
+      say.clearDigitCache = true;
 
       expect(say.requestData, equals(params));
     });

@@ -11,6 +11,10 @@ class Play extends AbstractMccc {
     this.params['barge-in'] = value;
   }
 
+  set clearDigitCache(bool value) {
+    this.params['clear-digit-cache'] = value;
+  }
+
   @override
   String action() => 'play';
 

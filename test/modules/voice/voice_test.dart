@@ -78,7 +78,7 @@ main() {
         httpClient: TestingUtils.getMockHttpClient(
           'voice.json',
           (Request request) {
-            expect(request.method, equalsIgnoringCase('get'));
+            expect(request.method, equalsIgnoringCase('post'));
             expect(
               request.url.path,
               equals(TestingUtils.getTestUri('/voice/dial')),

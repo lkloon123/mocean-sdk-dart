@@ -20,19 +20,19 @@ main() {
       );
     });
 
-    test('mccc bridge', () {
-      var bridge = Mccc.bridge();
+    test('mccc dial', () {
+      var dial = Mccc.dial();
 
       try {
-        bridge.requestData;
+        dial.requestData;
         fail('passed when required field not set');
       } on RequiredFieldException {}
 
-      bridge.to = 'testing to';
-      expect(bridge.requestData['to'], equals('testing to'));
+      dial.to = 'testing to';
+      expect(dial.requestData['to'], equals('testing to'));
 
       expect(
-        Mccc.bridge('testing to2').requestData['to'],
+        Mccc.dial('testing to2').requestData['to'],
         equals('testing to2'),
       );
     });
@@ -46,10 +46,17 @@ main() {
       } on RequiredFieldException {}
 
       collect.eventUrl = 'testing eventUrl';
+      collect.min = 1;
+      collect.max = 10;
+      collect.timeout = 500;
       expect(collect.requestData['event-url'], equals('testing eventUrl'));
 
+      collect = Mccc.collect('testing eventUrl2');
+      collect.min = 1;
+      collect.max = 10;
+      collect.timeout = 500;
       expect(
-        Mccc.collect('testing eventUrl2').requestData['event-url'],
+        collect.requestData['event-url'],
         equals('testing eventUrl2'),
       );
     });
@@ -83,6 +90,11 @@ main() {
       expect(sleep.requestData['duration'], equals(10000));
 
       expect(Mccc.sleep(20000).requestData['duration'], equals(20000));
+    });
+
+    test('mccc record', () {
+      var record = Mccc.record();
+      expect(record.requestData['action'], equals('record'));
     });
   });
 }

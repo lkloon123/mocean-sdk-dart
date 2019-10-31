@@ -7,10 +7,6 @@ class Sleep extends AbstractMccc {
     this.params['duration'] = value;
   }
 
-  set bargeIn(bool value) {
-    this.params['barge-in'] = value;
-  }
-
   @override
   String action() => 'sleep';
 
