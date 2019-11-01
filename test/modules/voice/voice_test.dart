@@ -10,9 +10,10 @@ main() {
 
   objectTest(res) {
     expect(res, isA<Map>());
-    expect(res['status'], equals(0));
-    expect(res['session-uuid'], equals('xxx-xxx-xxx-xxx'));
-    expect(res['call-uuid'], equals('xxx-xxx-xxx-xxx'));
+    expect(res['calls'][0]['status'], equals(0));
+    expect(res['calls'][0]['receiver'], equals(60123456789));
+    expect(res['calls'][0]['session-uuid'], equals('xxx-xxx-xxx-xxx'));
+    expect(res['calls'][0]['call-uuid'], equals('xxx-xxx-xxx-xxx'));
   }
 
   setUp(() {
