@@ -6,8 +6,12 @@ import 'package:moceansdk/src/modules/voice/mccc_builder.dart';
 import 'package:moceansdk/src/modules/voice/mccc/abstract_mccc.dart';
 
 class Voice extends AbstractClient {
+  bool _isHangup;
+
   Voice(AuthInterface objAuth, Transmitter transmitter)
-      : super(objAuth, transmitter);
+      : super(objAuth, transmitter) {
+    this._isHangup = false;
+  }
 
   set to(String value) {
     this.params['mocean-to'] = value;
@@ -45,9 +49,22 @@ class Voice extends AbstractClient {
     return await this.transmitter.post('/voice/dial', this.params);
   }
 
+  Future hangup(String callUuid) async {
+    this._isHangup = true;
+    this.create({});
+    this.isRequiredFieldSet();
+
+    return await this.transmitter.post('/voice/hangup/$callUuid', {});
+  }
+
   @override
   List requiredKey() {
     var requiredKey = super.requiredKey();
+
+    if (this._isHangup) {
+      return requiredKey;
+    }
+
     requiredKey.addAll(['mocean-to']);
     return requiredKey;
   }

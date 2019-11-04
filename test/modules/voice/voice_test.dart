@@ -109,5 +109,25 @@ main() {
         fail('passed when required field not set');
       } on RequiredFieldException {}
     });
+
+    test('hangup', () async {
+      var transmitterMock = Transmitter(
+        httpClient: TestingUtils.getMockHttpClient(
+          'hangup.json',
+          (Request request) {
+            expect(request.method, equalsIgnoringCase('post'));
+            expect(
+              request.url.path,
+              equals(TestingUtils.getTestUri('/voice/hangup/xxx-xxx-xxx-xxx')),
+            );
+          },
+        ),
+      );
+
+      mocean = TestingUtils.getMoceanObject(transmitterMock);
+      var res = await mocean.voice.hangup('xxx-xxx-xxx-xxx');
+
+      expect(res['status'], equals(0));
+    });
   });
 }
