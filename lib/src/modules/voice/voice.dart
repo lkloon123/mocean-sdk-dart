@@ -54,7 +54,7 @@ class Voice extends AbstractClient {
     this.create({});
     this.isRequiredFieldSet();
 
-    return await this.transmitter.post('/voice/hangup/$callUuid', {});
+    return await this.transmitter.post('/voice/hangup/$callUuid', this.params);
   }
 
   @override
