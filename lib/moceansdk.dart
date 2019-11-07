@@ -7,5 +7,5 @@ export 'src/auth/basic.dart';
 export 'src/modules/message/channel.dart';
 export 'src/modules/transmitter.dart';
 export 'src/modules/transmitter_config.dart';
-export 'src/modules/voice/mccc.dart';
-export 'src/modules/voice/mccc_builder.dart';
+export 'src/modules/voice/mc.dart';
+export 'src/modules/voice/mc_builder.dart';

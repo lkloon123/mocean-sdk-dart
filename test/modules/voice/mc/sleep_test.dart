@@ -1,5 +1,5 @@
 import 'package:moceansdk/moceansdk.dart';
-import 'package:moceansdk/src/modules/voice/mccc/sleep.dart';
+import 'package:moceansdk/src/modules/voice/mc/sleep.dart';
 import 'package:test/test.dart';
 
 main() {

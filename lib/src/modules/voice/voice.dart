@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:moceansdk/moceansdk.dart';
 import 'package:moceansdk/src/auth/auth_interface.dart';
 import 'package:moceansdk/src/modules/abstract_client.dart';
-import 'package:moceansdk/src/modules/voice/mccc_builder.dart';
-import 'package:moceansdk/src/modules/voice/mccc/abstract_mccc.dart';
+import 'package:moceansdk/src/modules/voice/mc_builder.dart';
+import 'package:moceansdk/src/modules/voice/mc/abstract_mc.dart';
 
 class Voice extends AbstractClient {
   bool _isHangup;
@@ -17,29 +17,29 @@ class Voice extends AbstractClient {
     this.params['mocean-to'] = value;
   }
 
-  set callEventUrl(String value) {
-    this.params['mocean-call-event-url'] = value;
+  set eventUrl(String value) {
+    this.params['mocean-event-url'] = value;
   }
 
-  set callControlCommands(value) {
-    if (value is McccBuilder) {
-      this.params['mocean-call-control-commands'] = json.encode(value.build());
-    } else if (value is AbstractMccc) {
-      this.params['mocean-call-control-commands'] =
+  set moceanCommand(value) {
+    if (value is McBuilder) {
+      this.params['mocean-command'] = json.encode(value.build());
+    } else if (value is AbstractMc) {
+      this.params['mocean-command'] =
           json.encode([value.requestData]);
     } else if (value is List) {
-      this.params['mocean-call-control-commands'] = json.encode(value);
+      this.params['mocean-command'] = json.encode(value);
     } else {
-      this.params['mocean-call-control-commands'] = value;
+      this.params['mocean-command'] = value;
     }
   }
 
   Future call([Map params]) async {
     if (params != null) {
-      if (params.containsKey('mocean-call-control-commands')) {
-        var mccc = params['mocean-call-control-commands'];
-        params.remove('mocean-call-control-commands');
-        this.callControlCommands = mccc;
+      if (params.containsKey('mocean-command')) {
+        var mc = params['mocean-command'];
+        params.remove('mocean-command');
+        this.moceanCommand = mc;
       }
 
       this.create(params);

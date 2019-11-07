@@ -1,6 +1,6 @@
-import 'package:moceansdk/src/modules/voice/mccc/abstract_mccc.dart';
+import 'package:moceansdk/src/modules/voice/mc/abstract_mc.dart';
 
-class Collect extends AbstractMccc {
+class Collect extends AbstractMc {
   Collect([params]) : super(params);
 
   set eventUrl(String value) {

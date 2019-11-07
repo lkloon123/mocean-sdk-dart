@@ -1,5 +1,5 @@
 import 'package:moceansdk/moceansdk.dart';
-import 'package:moceansdk/src/modules/voice/mccc/dial.dart';
+import 'package:moceansdk/src/modules/voice/mc/dial.dart';
 import 'package:test/test.dart';
 
 main() {

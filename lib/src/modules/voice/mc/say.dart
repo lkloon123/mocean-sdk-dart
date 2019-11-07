@@ -1,6 +1,6 @@
-import 'package:moceansdk/src/modules/voice/mccc/abstract_mccc.dart';
+import 'package:moceansdk/src/modules/voice/mc/abstract_mc.dart';
 
-class Say extends AbstractMccc {
+class Say extends AbstractMc {
   Say([params]) : super(params) {
     this.params['language'] ??= 'en-US';
   }

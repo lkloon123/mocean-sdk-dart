@@ -1,10 +1,10 @@
 import 'package:moceansdk/moceansdk.dart';
 import 'package:moceansdk/src/utils.dart';
 
-abstract class AbstractMccc {
+abstract class AbstractMc {
   Map params;
 
-  AbstractMccc([params]) {
+  AbstractMc([params]) {
     params ??= {};
     this.params = params;
   }

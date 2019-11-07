@@ -1,6 +1,6 @@
-import 'package:moceansdk/src/modules/voice/mccc/abstract_mccc.dart';
+import 'package:moceansdk/src/modules/voice/mc/abstract_mc.dart';
 
-class Sleep extends AbstractMccc {
+class Sleep extends AbstractMc {
   Sleep([params]) : super(params);
 
   set duration(int value) {

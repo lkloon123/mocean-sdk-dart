@@ -1,4 +1,4 @@
-import 'package:moceansdk/src/modules/voice/mccc/record.dart';
+import 'package:moceansdk/src/modules/voice/mc/record.dart';
 import 'package:test/test.dart';
 
 main() {

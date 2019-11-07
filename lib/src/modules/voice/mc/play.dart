@@ -1,6 +1,6 @@
-import 'package:moceansdk/src/modules/voice/mccc/abstract_mccc.dart';
+import 'package:moceansdk/src/modules/voice/mc/abstract_mc.dart';
 
-class Play extends AbstractMccc {
+class Play extends AbstractMc {
   Play([params]) : super(params);
 
   set files(String value) {

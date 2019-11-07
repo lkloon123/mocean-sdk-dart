@@ -28,49 +28,49 @@ main() {
       expect(voice.params['mocean-to'], isNotNull);
       expect(voice.params['mocean-to'], equals('test to'));
 
-      voice.callControlCommands = 'test callControlCommands';
-      expect(voice.params['mocean-call-control-commands'], isNotNull);
+      voice.moceanCommand = 'test moceanCommand';
+      expect(voice.params['mocean-command'], isNotNull);
       expect(
-        voice.params['mocean-call-control-commands'],
-        equals('test callControlCommands'),
+        voice.params['mocean-command'],
+        equals('test moceanCommand'),
       );
 
-      voice.callEventUrl = 'test callEventUrl';
-      expect(voice.params['mocean-call-event-url'], isNotNull);
+      voice.eventUrl = 'test eventUrl';
+      expect(voice.params['mocean-event-url'], isNotNull);
       expect(
-        voice.params['mocean-call-event-url'],
-        equals('test callEventUrl'),
+        voice.params['mocean-event-url'],
+        equals('test eventUrl'),
       );
 
-      // test multiple call control commands
+      // test multiple mocean command
       voice = mocean.voice;
-      voice.callControlCommands = [
+      voice.moceanCommand = [
         {'action': 'say'},
       ];
-      expect(voice.params['mocean-call-control-commands'], isNotNull);
+      expect(voice.params['mocean-command'], isNotNull);
       expect(
-        voice.params['mocean-call-control-commands'],
+        voice.params['mocean-command'],
         equals(json.encode([
           {'action': 'say'},
         ])),
       );
 
       voice = mocean.voice;
-      var builderParams = McccBuilder().add(Mccc.say('hello world'));
-      voice.callControlCommands = builderParams;
-      expect(voice.params['mocean-call-control-commands'], isNotNull);
+      var builderParams = McBuilder().add(Mc.say('hello world'));
+      voice.moceanCommand = builderParams;
+      expect(voice.params['mocean-command'], isNotNull);
       expect(
-        voice.params['mocean-call-control-commands'],
+        voice.params['mocean-command'],
         equals(json.encode(builderParams.build())),
       );
 
       voice = mocean.voice;
-      var mcccParams = Mccc.say('hello world');
-      voice.callControlCommands = mcccParams;
-      expect(voice.params['mocean-call-control-commands'], isNotNull);
+      var mcParams = Mc.say('hello world');
+      voice.moceanCommand = mcParams;
+      expect(voice.params['mocean-command'], isNotNull);
       expect(
-        voice.params['mocean-call-control-commands'],
-        equals(json.encode(McccBuilder().add(mcccParams).build())),
+        voice.params['mocean-command'],
+        equals(json.encode(McBuilder().add(mcParams).build())),
       );
     });
 
@@ -91,7 +91,7 @@ main() {
       mocean = TestingUtils.getMoceanObject(transmitterMock);
       var res = await mocean.voice.call({
         'mocean-to': 'test to',
-        'mocean-call-control-commands': 'test call control commands',
+        'mocean-command': 'test mocean command',
       });
 
       objectTest(res);

@@ -1,5 +1,5 @@
 import 'package:moceansdk/moceansdk.dart';
-import 'package:moceansdk/src/modules/voice/mccc/collect.dart';
+import 'package:moceansdk/src/modules/voice/mc/collect.dart';
 import 'package:test/test.dart';
 
 main() {

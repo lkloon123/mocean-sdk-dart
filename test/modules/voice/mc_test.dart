@@ -2,9 +2,9 @@ import 'package:moceansdk/moceansdk.dart';
 import 'package:test/test.dart';
 
 main() {
-  group('Test Mccc', () {
-    test('mccc say', () {
-      var say = Mccc.say();
+  group('Test Mc', () {
+    test('mc say', () {
+      var say = Mc.say();
 
       try {
         say.requestData;
@@ -15,13 +15,13 @@ main() {
       expect(say.requestData['text'], equals('testing text'));
 
       expect(
-        Mccc.say('testing text2').requestData['text'],
+        Mc.say('testing text2').requestData['text'],
         equals('testing text2'),
       );
     });
 
-    test('mccc dial', () {
-      var dial = Mccc.dial();
+    test('mc dial', () {
+      var dial = Mc.dial();
 
       try {
         dial.requestData;
@@ -32,13 +32,13 @@ main() {
       expect(dial.requestData['to'], equals('testing to'));
 
       expect(
-        Mccc.dial('testing to2').requestData['to'],
+        Mc.dial('testing to2').requestData['to'],
         equals('testing to2'),
       );
     });
 
-    test('mccc collect', () {
-      var collect = Mccc.collect();
+    test('mc collect', () {
+      var collect = Mc.collect();
 
       try {
         collect.requestData;
@@ -51,7 +51,7 @@ main() {
       collect.timeout = 500;
       expect(collect.requestData['event-url'], equals('testing eventUrl'));
 
-      collect = Mccc.collect('testing eventUrl2');
+      collect = Mc.collect('testing eventUrl2');
       collect.min = 1;
       collect.max = 10;
       collect.timeout = 500;
@@ -61,8 +61,8 @@ main() {
       );
     });
 
-    test('mccc play', () {
-      var play = Mccc.play();
+    test('mc play', () {
+      var play = Mc.play();
 
       try {
         play.requestData;
@@ -73,13 +73,13 @@ main() {
       expect(play.requestData['file'], equals('testing file'));
 
       expect(
-        Mccc.play('testing file2').requestData['file'],
+        Mc.play('testing file2').requestData['file'],
         equals('testing file2'),
       );
     });
 
-    test('mccc sleep', () {
-      var sleep = Mccc.sleep();
+    test('mc sleep', () {
+      var sleep = Mc.sleep();
 
       try {
         sleep.requestData;
@@ -89,11 +89,11 @@ main() {
       sleep.duration = 10000;
       expect(sleep.requestData['duration'], equals(10000));
 
-      expect(Mccc.sleep(20000).requestData['duration'], equals(20000));
+      expect(Mc.sleep(20000).requestData['duration'], equals(20000));
     });
 
-    test('mccc record', () {
-      var record = Mccc.record();
+    test('mc record', () {
+      var record = Mc.record();
       expect(record.requestData['action'], equals('record'));
     });
   });

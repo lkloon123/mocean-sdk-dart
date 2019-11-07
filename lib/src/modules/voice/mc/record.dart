@@ -1,6 +1,6 @@
-import 'package:moceansdk/src/modules/voice/mccc/abstract_mccc.dart';
+import 'package:moceansdk/src/modules/voice/mc/abstract_mc.dart';
 
-class Record extends AbstractMccc {
+class Record extends AbstractMc {
   Record([params]) : super(params);
 
   @override
