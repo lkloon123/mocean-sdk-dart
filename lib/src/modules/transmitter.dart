@@ -17,11 +17,37 @@ class Transmitter {
     this._transmitterConfig = transmitterConfig;
   }
 
-  Future get(String uri, Map params) async => this.send('get', uri, params);
+  Future<Map<String, dynamic>> get(
+    String uri,
+    Map params,
+  ) async =>
+      this.sendAndReturnDecodedBody('get', uri, params);
 
-  Future post(String uri, Map params) async => this.send('post', uri, params);
+  Future<Map<String, dynamic>> post(
+    String uri,
+    Map params,
+  ) async =>
+      this.sendAndReturnDecodedBody('post', uri, params);
 
-  Future send(String method, String uri, Map params) async {
+  Future<Map<String, dynamic>> sendAndReturnDecodedBody(
+    String method,
+    String uri,
+    Map params,
+  ) async {
+    http.Response response = await this.send(method, uri, params);
+
+    var decodedBody = json.decode(response.body);
+
+    if (!Utils.isNullOrEmpty(decodedBody['status']) &&
+        decodedBody['status'] != '0' &&
+        decodedBody['status'] != 0) {
+      throw MoceanErrorException(decodedBody['err_msg'], decodedBody);
+    }
+
+    return decodedBody;
+  }
+
+  Future<http.Response> send(String method, String uri, Map params) async {
     params['mocean-medium'] = 'DART-SDK';
     params['mocean-resp-format'] = 'json';
 
@@ -35,15 +61,7 @@ class Transmitter {
           body: params);
     }
 
-    var decodedBody = json.decode(response.body);
-
-    if (!Utils.isNullOrEmpty(decodedBody['status']) &&
-        decodedBody['status'] != '0' &&
-        decodedBody['status'] != 0) {
-      throw MoceanErrorException(decodedBody['err_msg'], decodedBody);
-    }
-
-    return decodedBody;
+    return response;
   }
 
   String encodeMap(Map data) {

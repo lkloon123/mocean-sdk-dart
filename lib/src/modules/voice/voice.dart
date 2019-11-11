@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:moceansdk/moceansdk.dart';
 import 'package:moceansdk/src/auth/auth_interface.dart';
 import 'package:moceansdk/src/modules/abstract_client.dart';
@@ -7,10 +8,12 @@ import 'package:moceansdk/src/modules/voice/mc/abstract_mc.dart';
 
 class Voice extends AbstractClient {
   bool _isHangup;
+  bool _isRecording;
 
   Voice(AuthInterface objAuth, Transmitter transmitter)
       : super(objAuth, transmitter) {
     this._isHangup = false;
+    this._isRecording = false;
   }
 
   set to(String value) {
@@ -25,8 +28,7 @@ class Voice extends AbstractClient {
     if (value is McBuilder) {
       this.params['mocean-command'] = json.encode(value.build());
     } else if (value is AbstractMc) {
-      this.params['mocean-command'] =
-          json.encode([value.requestData]);
+      this.params['mocean-command'] = json.encode([value.requestData]);
     } else if (value is List) {
       this.params['mocean-command'] = json.encode(value);
     } else {
@@ -57,11 +59,26 @@ class Voice extends AbstractClient {
     return await this.transmitter.post('/voice/hangup/$callUuid', this.params);
   }
 
+  Future<Map<String, dynamic>> recording(String callUuid) async {
+    this._isRecording = true;
+    this.create({'mocean-call-uuid': callUuid});
+    this.isRequiredFieldSet();
+
+    return this
+        .transmitter
+        .send('get', '/voice/rec', this.params)
+        .then((http.Response response) => response.bodyBytes)
+        .then((recordingBuffer) => {
+              'recordingBuffer': recordingBuffer,
+              'filename': "${callUuid}.mp3"
+            });
+  }
+
   @override
   List requiredKey() {
     var requiredKey = super.requiredKey();
 
-    if (this._isHangup) {
+    if (this._isHangup || this._isRecording) {
       return requiredKey;
     }
 
