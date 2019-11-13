@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:http/http.dart';
 import 'package:moceansdk/moceansdk.dart';
 import 'package:test/test.dart';
@@ -6,35 +8,34 @@ import '../../testing_utils.dart';
 main() {
   Mocean mocean;
 
-  objectTest(res) {
-    expect(res, isA<Map>());
-    expect(res['status'], equals(0));
-    expect(res['value'], equals(100.0));
-  }
-
   setUp(() {
     mocean = TestingUtils.getMoceanObject();
   });
 
-  group('Test Balance', () {
-    test('inquiry', () async {
+  group('Test Recording', () {
+    test('recording', () async {
       var transmitterMock = Transmitter(
         httpClient: TestingUtils.getMockHttpClient(
-          'balance.json',
+          'recording.json',
           (Request request) {
             expect(request.method, equalsIgnoringCase('get'));
             expect(
+              request.url.queryParameters['mocean-call-uuid'],
+              equals('xxx-xxx-xxx-xxx'),
+            );
+            expect(
               request.url.path,
-              equals(TestingUtils.getTestUri('/account/balance')),
+              equals(TestingUtils.getTestUri('/voice/rec')),
             );
           },
         ),
       );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
-      var res = await mocean.balance.inquiry({'mocean-resp-format': 'json'});
-
-      objectTest(res);
+      var recording = await mocean.voice.recording('xxx-xxx-xxx-xxx');
+      expect(recording['recordingBuffer'], isA<Uint8List>());
+      expect(recording['filename'], isA<String>());
+      expect(recording['filename'], equals('xxx-xxx-xxx-xxx.mp3'));
     });
   });
 }

@@ -7,7 +7,10 @@ class MoceanErrorException implements Exception {
   Map get errorResponse => this._errorResponse;
 
   String toString() {
-    if (this._errMsg == null) return this.runtimeType.toString();
+    if (this._errMsg == null) {
+      return this.runtimeType.toString();
+    }
+
     return "${this.runtimeType.toString()}: ${this._errMsg}";
   }
 }

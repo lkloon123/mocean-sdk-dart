@@ -41,12 +41,17 @@ main() {
 
     test('inquiry', () async {
       var transmitterMock = Transmitter(
-          null,
-          TestingUtils.getMockHttpClient('price.json', (Request request) {
+        httpClient: TestingUtils.getMockHttpClient(
+          'price.json',
+          (Request request) {
             expect(request.method, equalsIgnoringCase('get'));
-            expect(request.url.path,
-                equals(TestingUtils.getTestUri('/account/pricing')));
-          }));
+            expect(
+              request.url.path,
+              equals(TestingUtils.getTestUri('/account/pricing')),
+            );
+          },
+        ),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
       var res = await mocean.pricing.inquiry({'mocean-resp-format': 'json'});

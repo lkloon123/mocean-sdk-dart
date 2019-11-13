@@ -3,8 +3,10 @@ import 'package:moceansdk/src/modules/abstract_client.dart';
 import 'package:moceansdk/src/modules/transmitter.dart';
 
 class Sms extends AbstractClient {
-  Sms(AuthInterface objAuth, Transmitter transmitter)
-      : super(objAuth, transmitter);
+  Sms(
+    AuthInterface objAuth,
+    Transmitter transmitter,
+  ) : super(objAuth, transmitter);
 
   set from(String value) {
     this.params['mocean-from'] = value;

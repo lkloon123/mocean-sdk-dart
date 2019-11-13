@@ -19,7 +19,8 @@ class TestingUtils {
       }
 
       return Future<http.Response>.value(
-          http.Response(TestingUtils.getResponseStr(fileName), 200));
+        http.Response(TestingUtils.getResponseStr(fileName), 200),
+      );
     });
   }
 

@@ -7,8 +7,10 @@ class SendCode extends AbstractClient {
   Channel _channel;
   bool _isResend;
 
-  SendCode(AuthInterface objAuth, Transmitter transmitter)
-      : super(objAuth, transmitter) {
+  SendCode(
+    AuthInterface objAuth,
+    Transmitter transmitter,
+  ) : super(objAuth, transmitter) {
     this._channel = Channel.AUTO;
     this._isResend = false;
   }

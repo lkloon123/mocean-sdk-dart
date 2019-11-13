@@ -3,8 +3,10 @@ import 'package:moceansdk/src/auth/auth_interface.dart';
 import 'package:moceansdk/src/modules/abstract_client.dart';
 
 class NumberLookup extends AbstractClient {
-  NumberLookup(AuthInterface objAuth, Transmitter transmitter)
-      : super(objAuth, transmitter);
+  NumberLookup(
+    AuthInterface objAuth,
+    Transmitter transmitter,
+  ) : super(objAuth, transmitter);
 
   set to(String value) {
     this.params['mocean-to'] = value;

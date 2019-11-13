@@ -40,6 +40,7 @@ mocean.messageStatus.inquiry(); //Get Message Status
 mocean.sendCode.send();         //Send Verify Code
 mocean.verifyCode.send();       //Check Verify Code
 mocean.numberLookup.inquiry();  //Number Lookup
+mocean.voice.call();            //Voice
 ```
 
 ## Example

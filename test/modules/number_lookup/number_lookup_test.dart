@@ -44,12 +44,14 @@ main() {
 
     test('inquiry', () async {
       var transmitterMock = Transmitter(
-          null,
-          TestingUtils.getMockHttpClient('number_lookup.json',
-              (Request request) {
+        httpClient: TestingUtils.getMockHttpClient(
+          'number_lookup.json',
+          (Request request) {
             expect(request.method, equalsIgnoringCase('post'));
             expect(request.url.path, equals(TestingUtils.getTestUri('/nl')));
-          }));
+          },
+        ),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
       var res = await mocean.numberLookup.inquiry({'mocean-to': 'test to'});
@@ -59,7 +61,8 @@ main() {
 
     test('required field not set', () async {
       var transmitterMock = Transmitter(
-          null, TestingUtils.getMockHttpClient('number_lookup.json'));
+        httpClient: TestingUtils.getMockHttpClient('number_lookup.json'),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
 

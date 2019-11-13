@@ -29,24 +29,30 @@ main() {
 
     test('inquiry', () async {
       var transmitterMock = Transmitter(
-          null,
-          TestingUtils.getMockHttpClient('message_status.json',
-              (Request request) {
+        httpClient: TestingUtils.getMockHttpClient(
+          'message_status.json',
+          (Request request) {
             expect(request.method, equalsIgnoringCase('get'));
-            expect(request.url.path,
-                equals(TestingUtils.getTestUri('/report/message')));
-          }));
+            expect(
+              request.url.path,
+              equals(TestingUtils.getTestUri('/report/message')),
+            );
+          },
+        ),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
-      var res =
-          await mocean.messageStatus.inquiry({'mocean-msgid': 'test msg id'});
+      var res = await mocean.messageStatus.inquiry({
+        'mocean-msgid': 'test msg id',
+      });
 
       objectTest(res);
     });
 
     test('required field not set', () async {
       var transmitterMock = Transmitter(
-          null, TestingUtils.getMockHttpClient('message_status.json'));
+        httpClient: TestingUtils.getMockHttpClient('message_status.json'),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
 

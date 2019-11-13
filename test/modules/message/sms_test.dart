@@ -11,8 +11,10 @@ main() {
     expect(res['messages'], hasLength(1));
     expect(res['messages'][0]['status'], equals(0));
     expect(res['messages'][0]['receiver'], equals('60123456789'));
-    expect(res['messages'][0]['msgid'],
-        equals('CPASS_restapi_C0000002737000000.0001'));
+    expect(
+      res['messages'][0]['msgid'],
+      equals('CPASS_restapi_C0000002737000000.0001'),
+    );
   }
 
   setUp(() {
@@ -74,25 +76,29 @@ main() {
 
     test('send', () async {
       var transmitterMock = Transmitter(
-          null,
-          TestingUtils.getMockHttpClient('message.json', (Request request) {
+        httpClient: TestingUtils.getMockHttpClient(
+          'message.json',
+          (Request request) {
             expect(request.method, equalsIgnoringCase('post'));
             expect(request.url.path, equals(TestingUtils.getTestUri('/sms')));
-          }));
+          },
+        ),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
       var res = await mocean.sms.send({
         'mocean-from': 'test from',
         'mocean-to': 'test to',
-        'mocean-text': 'test text'
+        'mocean-text': 'test text',
       });
 
       objectTest(res);
     });
 
     test('required field not set', () async {
-      var transmitterMock =
-          Transmitter(null, TestingUtils.getMockHttpClient('message.json'));
+      var transmitterMock = Transmitter(
+        httpClient: TestingUtils.getMockHttpClient('message.json'),
+      );
 
       mocean = TestingUtils.getMoceanObject(transmitterMock);
 
