@@ -53,10 +53,10 @@ class Voice extends AbstractClient {
 
   Future hangup(String callUuid) async {
     this._isHangup = true;
-    this.create({});
+    this.create({'mocean-call-uuid': callUuid});
     this.isRequiredFieldSet();
 
-    return await this.transmitter.post('/voice/hangup/$callUuid', this.params);
+    return await this.transmitter.post('/voice/hangup', this.params);
   }
 
   Future<Map<String, dynamic>> recording(String callUuid) async {

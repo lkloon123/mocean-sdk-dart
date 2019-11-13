@@ -115,10 +115,11 @@ main() {
         httpClient: TestingUtils.getMockHttpClient(
           'hangup.json',
           (Request request) {
+            expect(request.bodyFields['mocean-call-uuid'], equals('xxx-xxx-xxx-xxx'));
             expect(request.method, equalsIgnoringCase('post'));
             expect(
               request.url.path,
-              equals(TestingUtils.getTestUri('/voice/hangup/xxx-xxx-xxx-xxx')),
+              equals(TestingUtils.getTestUri('/voice/hangup')),
             );
           },
         ),
