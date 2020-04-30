@@ -1,7 +1,3 @@
-## [1.2.0](https://github.com/MoceanAPI/mocean-sdk-dart/compare/1.1.1...1.2.0)
-
-- Add Voice Feature [5623e7f](https://github.com/MoceanAPI/mocean-sdk-dart/commit/578fe15da5cdc0bc5d4223d481220920b71c15ff)
-
 ## [1.1.1](http://github.com/MoceanAPI/mocean-sdk-dart/compare/1.1.0...1.1.1)
 
 - Fix code analytics sugguestions [4ddb086](https://gitub.com/MoceanAPI/mocean-sdk-dart/commit/4ddb086c8740ef9ef5dca79ba0db3bb69f3b954d)
