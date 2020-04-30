@@ -16,8 +16,15 @@ moceanapi.com][signup].
 
 To install the client
 
-- add `moceansdk` to your `pubspec.yaml`
-- run `pub get`
+1. add `moceansdk` to your `pubspec.yaml`
+
+```yaml
+name: my_app
+dependencies:
+  moceansdk: ^1.0.0
+```
+
+2. run `pub get`
 
 ## Usage
 
@@ -50,13 +57,26 @@ To use [Mocean's SMS API][doc_sms] to send an SMS message, call the `mocean.sms.
 The API can be called directly, using a simple array of parameters, the keys match the [parameters of the API][doc_sms].
 
 ```dart
-var res = await mocean.sms.send({
-  'mocean-to': '60123456789',
-  'mocean-text': 'hello world',
-  'mocean-from': 'dart'
-});
+import 'package:moceansdk/moceansdk.dart';
+  
+var mocean = Mocean(
+  Basic('MOCEAN_API_KEY', 'MOCEAN_API_SECRET')
+);
 
-print(res);
+void main() async {
+  var res = await mocean.sms.send({
+    'mocean-to': '60168308600',
+    'mocean-text': 'hello world testing dart',
+    'mocean-from': 'MoceanAPI'
+  });
+
+  var result = res['messages'][0];
+
+  print(result);
+  print(result['status']);
+  print(result['msgid']);
+  print(result['receiver']);
+}
 ```
 
 ##### *All calls will return `Future` object
@@ -67,7 +87,7 @@ For your convenient, the API response has been parsed to `Map`
 
 ```dart
 print(res);           // show full response string
-print(res['status']); // show response status, '0' in this case
+print(res['messages'][0]['status']); // show response status, '0' in this case
 ```
 
 ## Documentation
