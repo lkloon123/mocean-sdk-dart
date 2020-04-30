@@ -65,7 +65,7 @@ var mocean = Mocean(
 
 void main() async {
   var res = await mocean.sms.send({
-    'mocean-to': '60168308600',
+    'mocean-to': '60123456789',
     'mocean-text': 'hello world testing dart',
     'mocean-from': 'MoceanAPI'
   });
