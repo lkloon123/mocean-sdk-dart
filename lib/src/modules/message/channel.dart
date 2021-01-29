@@ -1,1 +1,1 @@
-enum Channel { AUTO, SMS }
+enum Channel { AUTO, SMS, TELEGRAM }

@@ -9,3 +9,7 @@ export 'src/modules/transmitter.dart';
 export 'src/modules/transmitter_config.dart';
 export 'src/modules/voice/mc.dart';
 export 'src/modules/voice/mc_builder.dart';
+
+export 'src/modules/command/command_mc.dart';
+export 'src/modules/command/command_mc_builder.dart';
+export 'src/modules/command/command.dart';

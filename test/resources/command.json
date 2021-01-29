@@ -1,0 +1,12 @@
+{
+    "status": 0,
+    "session-uuid": "xxxxxx",
+    "mocean-command": [
+        {
+            "action": "xxxx-xxxx",
+            "message-id": "xxxxxx",
+            "mc-position": 0,
+            "total-segments": 1
+        }
+    ]
+}

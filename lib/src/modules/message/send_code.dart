@@ -62,6 +62,8 @@ class SendCode extends AbstractClient {
 
     if (this._channel == Channel.SMS) {
       sendCodeUrl += '/sms';
+    } else if (this._channel == Channel.TELEGRAM) {
+      sendCodeUrl += '/telegram';
     }
 
     return await this.transmitter.post(sendCodeUrl, this.params);

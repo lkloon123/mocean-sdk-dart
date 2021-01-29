@@ -1,3 +1,4 @@
+import 'package:moceansdk/moceansdk.dart';
 import 'package:moceansdk/src/exception/mocean_error_exception.dart';
 import 'package:moceansdk/src/exception/required_field_exception.dart';
 import 'package:moceansdk/src/modules/account/balance.dart';
@@ -9,6 +10,7 @@ import 'package:moceansdk/src/modules/message/verify_code.dart';
 import 'package:moceansdk/src/modules/number_lookup/number_lookup.dart';
 import 'package:moceansdk/src/modules/transmitter.dart';
 import 'package:moceansdk/src/modules/voice/voice.dart';
+import 'package:moceansdk/src/modules/command/command.dart';
 import 'package:moceansdk/src/utils.dart';
 import 'package:moceansdk/src/auth/auth_interface.dart';
 
@@ -49,4 +51,6 @@ class Mocean {
       NumberLookup(this._objAuth, this._transmitter);
 
   Voice get voice => Voice(this._objAuth, this._transmitter);
+
+  Command get command => Command(this._objAuth, this._transmitter);
 }
