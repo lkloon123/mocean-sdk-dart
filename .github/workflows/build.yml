@@ -4,21 +4,24 @@ on:
     branches: [master]
     path-ignores:
       - "**.md"
-      - ".github/workflow/**"
+
   pull_request: 
     branches: [master]
     path-ignores:
       - "**.md"
-      - ".github/workflow/**"
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sdk: [2.1.x, 2.2.x, 2.3.x, 2.4.x, stable]
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
+      - uses: dart-lang/setup-dart@v1
         with:
-          java-version: "12.x"
+          sdk: ${{ matrix.sdk }}
+
       - uses: subosito/flutter-action@v1.3.2
         with:
           channel: "stable"
@@ -27,12 +30,18 @@ jobs:
         with:
           package: egakcap
           ignore: "*_state.dart, do_not_import_me.dart"
-          
-      - run: flutter pub get
-      - run: flutter packages pub run build_runner build
-      - run: flutter build aot
-      - run: flutter analyze
-      - run: flutter test --coverage .
-      - uses: codecov/codecov-action@v1.0.2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: install dependencies
+        run: dart pub get
+      
+      - name: build test
+        run: dart pub run test
+
+
+      - name: codecov test
+        uses: codecov/codecov-action@v1
+        with: 
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.CODECOV_TOKEN }} 
+          verbose: true 
+      
