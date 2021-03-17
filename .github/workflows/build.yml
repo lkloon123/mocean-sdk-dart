@@ -22,9 +22,6 @@ jobs:
         with:
           sdk: ${{ matrix.sdk }}
 
-      - uses: subosito/flutter-action@v1.3.2
-        with:
-          channel: "stable"
           
       - uses: stelynx/dart-full-coverage@v1.0.3
         with:
@@ -36,7 +33,6 @@ jobs:
       
       - name: build test
         run: dart pub run test
-
 
       - name: codecov test
         uses: codecov/codecov-action@v1
