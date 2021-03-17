@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        sdk: [stable]
+        sdk: [2.12]
     steps:
       - uses: actions/checkout@v1
       - uses: dart-lang/setup-dart@v0.1
@@ -32,7 +32,7 @@ jobs:
         run: dart pub get
       
       - name: run test coverage
-        run: nohup pub run test_coverage &
+        run: pub run test_coverage
 
       - name: build test
         run: dart --no-sound-null-safety test --platform vm
