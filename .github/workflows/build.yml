@@ -32,8 +32,8 @@ jobs:
         run: dart pub get
       
       - name: run test coverage
-        run: test_coverage
-        
+        run: pub run test_coverage
+
       - name: build test
         run: dart --no-sound-null-safety test
 
