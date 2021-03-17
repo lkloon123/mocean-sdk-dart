@@ -18,7 +18,7 @@ jobs:
         sdk: [stable]
     steps:
       - uses: actions/checkout@v1
-      - uses: dart-lang/setup-dart@v1
+      - uses: dart-lang/setup-dart@v0.1
         with:
           sdk: ${{ matrix.sdk }}
 
@@ -30,12 +30,9 @@ jobs:
 
       - name: install dependencies
         run: dart pub get
-      
-      - name: run test coverage
-        run: pub run test_coverage
 
       - name: build test
-        run: dart --no-sound-null-safety test
+        run: dart --no-sound-null-safety test --platform vm
 
       - name: codecov test
         uses: codecov/codecov-action@v1
