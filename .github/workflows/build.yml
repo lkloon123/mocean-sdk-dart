@@ -1,11 +1,11 @@
 name: build
 on:
-  push: 
+  push:
     branches: [master]
     path-ignores:
       - "**.md"
 
-  pull_request: 
+  pull_request:
     branches: [master]
     path-ignores:
       - "**.md"
@@ -15,32 +15,29 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        sdk: [2.12]
+        sdk: [2.1.x, 2.2.x, 2.3.x, 2.4.x, stable]
     steps:
       - uses: actions/checkout@v1
       - uses: dart-lang/setup-dart@v0.1
         with:
           sdk: ${{ matrix.sdk }}
 
-          
-      - uses: stelynx/dart-full-coverage@v1.0.3
-        with:
-          package: egakcap
-          ignore: "*_state.dart, do_not_import_me.dart"
-
       - name: install dependencies
         run: dart pub get
-      
-      - name: run test coverage
-        run: pub run test_coverage
 
-      - name: build test
+      - name: run test
         run: dart --no-sound-null-safety test --platform vm
 
-      - name: codecov test
+      # only run coverage on stable branch
+      - name: run test coverage
+        if: ${{ matrix.sdk == 'stable' }}
+        run: pub run test_coverage
+
+      # only send to codecov if coverage available
+      - name: send coverage report to codecov
+        if: ${{ matrix.sdk == 'stable' }}
         uses: codecov/codecov-action@v1
-        with: 
+        with:
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.CODECOV_TOKEN }} 
-          verbose: true 
-      
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
