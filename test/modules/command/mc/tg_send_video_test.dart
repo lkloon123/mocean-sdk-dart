@@ -9,7 +9,7 @@ main() {
         'from': {'type': 'bot_username', 'id': 'testing id'},
         'to': {'type': 'chat_id', 'id': 'testing id'},
         'content': {
-          'type': 'animation',
+          'type': 'video',
           'rich_media_url': 'testing url',
           'text': 'testing text'
         },

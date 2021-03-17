@@ -14,7 +14,7 @@ main() {
     expect(res['session-uuid'], equals('xxxxxx'));
 
     expect(
-        res['mocean-command'][0]['mocean-command-resp'],
+        res['mocean-command'][0],
         equals({
           'action': 'xxxx-xxxx',
           'message-id': 'xxxxxx',
@@ -32,8 +32,8 @@ main() {
       var command = mocean.command;
 
       command.eventUrl = 'test url';
-      expect(command.params['mocean-to'], isNotNull);
-      expect(command.params['mocean-to'], equals('test url'));
+      expect(command.params['mocean-event-url'], isNotNull);
+      expect(command.params['mocean-event-url'], equals('test url'));
 
       command.moceanCommand = 'test moceanCommand';
       expect(command.params['mocean-command'], isNotNull);
@@ -48,11 +48,14 @@ main() {
         CommandMc.tgSendText
             .from('test from')
             .to('test to')
-            .content('test content'),
+            .content('test content')
+            .requestData,
+            
         CommandMc.tgSendText
             .from('test from 2')
             .to('test to 2')
-            .content('test content 2'),
+            .content('test content 2')
+            .requestData,
       ];
       expect(command.params['mocean-command'], isNotNull);
       expect(
@@ -61,11 +64,14 @@ main() {
           CommandMc.tgSendText
               .from('test from')
               .to('test to')
-              .content('test content'),
+              .content('test content')
+              .requestData,
+
           CommandMc.tgSendText
               .from('test from 2')
               .to('test to 2')
-              .content('test content 2'),
+              .content('test content 2')
+              .requestData,
         ])),
       );
     });

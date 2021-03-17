@@ -115,3 +115,5 @@ modules.xml
 
 coverage/
 test/.test_coverage.dart
+
+project
