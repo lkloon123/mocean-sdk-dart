@@ -1,17 +1,30 @@
 name: publish
 on:
-  release
+  release:
     types: [created]
 
 jobs:
-  publishing:
+  publish:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        sdk: [2.1.x, 2.2.x, 2.3.x, 2.4.x, stable]
     
     steps:
-      - uses: actions/checkout@v1
-      - uses: dart-lang/setup-dart@v0.1
-        with:
-          sdk: ${{ matrix.sdk }}
+      - name: Checkout
+        uses: actions/checkout@v1
+      
+      - name: publish
+        run: |
+          mkdir -p .pub-cache
+
+          cat <<EOF > ~/.pub-cache/credentials.json
+          {
+            "accessToken":"${{ secrets.PUB_ACCESS_TOKEN }}",
+            "refreshToken":"${{ secrets.PUB_REFRESH_TOKEN }}",
+            "tokenEndpoint":"${{ secrets.PUB_TOKEN_ENDPOINT }}",
+            "scopes":["openid","https://www.googleapis.com/auth/userinfo.email"],
+            "expiration": ${{ secrets.PUB_EXPIRATION }}
+          }
+          EOF
+
+          pub publish -f
+
+        
