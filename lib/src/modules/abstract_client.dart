@@ -4,7 +4,7 @@ import 'package:moceansdk/src/modules/transmitter.dart';
 import 'package:moceansdk/src/utils.dart';
 
 abstract class AbstractClient {
-  Map params;
+  Map<String, dynamic> params;
   AuthInterface objAuth;
   Transmitter transmitter;
 
@@ -20,12 +20,13 @@ abstract class AbstractClient {
     for (var required in this.requiredKey()) {
       if (Utils.isNullOrEmpty(this.params[required])) {
         throw RequiredFieldException(
-            "${required} is mandatory field, can't be empty");
+          "${required} is mandatory field, can't be empty",
+        );
       }
     }
   }
 
-  List requiredKey() {
+  List<String> requiredKey() {
     return ['mocean-api-key', 'mocean-api-secret'];
   }
 }

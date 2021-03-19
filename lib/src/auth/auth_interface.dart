@@ -1,5 +1,5 @@
 abstract class AuthInterface {
   String getAuthMethod();
 
-  Map getParams();
+  Map<String, dynamic> getParams();
 }

@@ -20,7 +20,7 @@ class Pricing extends AbstractClient {
     this.params['mocean-delimiter'] = value;
   }
 
-  Future inquiry([Map params]) async {
+  Future<Map<String, dynamic>> inquiry([Map<String, dynamic> params]) async {
     if (params != null) {
       this.create(params);
     }

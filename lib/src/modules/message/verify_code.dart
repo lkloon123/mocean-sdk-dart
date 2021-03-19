@@ -16,7 +16,7 @@ class VerifyCode extends AbstractClient {
     this.params['mocean-code'] = value;
   }
 
-  Future send([Map params]) async {
+  Future<Map<String, dynamic>> send([Map<String, dynamic> params]) async {
     if (params != null) {
       this.create(params);
     }
@@ -26,7 +26,7 @@ class VerifyCode extends AbstractClient {
   }
 
   @override
-  List requiredKey() {
+  List<String> requiredKey() {
     var requiredKey = super.requiredKey();
     requiredKey.addAll(['mocean-reqid', 'mocean-code']);
     return requiredKey;

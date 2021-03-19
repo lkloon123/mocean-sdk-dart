@@ -16,7 +16,7 @@ class NumberLookup extends AbstractClient {
     this.params['mocean-nl-url'] = value;
   }
 
-  Future inquiry([Map params]) async {
+  Future<Map<String, dynamic>> inquiry([Map<String, dynamic> params]) async {
     if (params != null) {
       this.create(params);
     }
@@ -26,7 +26,7 @@ class NumberLookup extends AbstractClient {
   }
 
   @override
-  List requiredKey() {
+  List<String> requiredKey() {
     var requiredKey = super.requiredKey();
     requiredKey.addAll(['mocean-to']);
     return requiredKey;

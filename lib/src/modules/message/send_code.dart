@@ -47,7 +47,7 @@ class SendCode extends AbstractClient {
     this._channel = channel;
   }
 
-  Future send([Map params]) async {
+  Future<Map<String, dynamic>> send([Map<String, dynamic> params]) async {
     if (params != null) {
       this.create(params);
     }
@@ -69,7 +69,7 @@ class SendCode extends AbstractClient {
     return await this.transmitter.post(sendCodeUrl, this.params);
   }
 
-  Future resend([Map params]) async {
+  Future<Map<String, dynamic>> resend([Map<String, dynamic> params]) async {
     this
       .._isResend = true
       ..sendAs = Channel.SMS;
@@ -77,7 +77,7 @@ class SendCode extends AbstractClient {
   }
 
   @override
-  List requiredKey() {
+  List<String> requiredKey() {
     var requiredKey = super.requiredKey();
     if (this._isResend) {
       requiredKey.addAll(['mocean-reqid']);

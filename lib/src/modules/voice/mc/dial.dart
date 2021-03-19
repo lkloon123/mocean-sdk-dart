@@ -19,5 +19,5 @@ class Dial extends AbstractMc {
   String action() => 'dial';
 
   @override
-  List requiredKey() => ['to'];
+  List<String> requiredKey() => ['to'];
 }

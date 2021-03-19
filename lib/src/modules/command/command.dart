@@ -26,7 +26,7 @@ class Command extends AbstractClient {
     }
   }
 
-  Future execute([Map params]) async {
+  Future<Map<String, dynamic>> execute([Map<String, dynamic> params]) async {
     if (params != null) {
       if (params.containsKey('mocean-command')) {
         var mc = params['mocean-command'];
@@ -42,7 +42,7 @@ class Command extends AbstractClient {
   }
 
   @override
-  List requiredKey() {
+  List<String> requiredKey() {
     var requiredKey = super.requiredKey();
 
     requiredKey.addAll(['mocean-command']);

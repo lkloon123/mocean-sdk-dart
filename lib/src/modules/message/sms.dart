@@ -56,7 +56,7 @@ class Sms extends AbstractClient {
     this.params['mocean-validity'] = value;
   }
 
-  Future send([Map params]) async {
+  Future<Map<String, dynamic>> send([Map<String, dynamic> params]) async {
     if (params != null) {
       this.create(params);
     }
@@ -66,7 +66,7 @@ class Sms extends AbstractClient {
   }
 
   @override
-  List requiredKey() {
+  List<String> requiredKey() {
     var requiredKey = super.requiredKey();
     requiredKey.addAll(['mocean-from', 'mocean-to', 'mocean-text']);
     return requiredKey;

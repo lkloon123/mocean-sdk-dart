@@ -20,7 +20,7 @@ class Basic implements AuthInterface {
   }
 
   @override
-  Map getParams() {
+  Map<String, dynamic> getParams() {
     return {
       'mocean-api-key': _apiKey,
       'mocean-api-secret': _apiSecret,

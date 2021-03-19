@@ -19,20 +19,22 @@ class Transmitter {
 
   Future<Map<String, dynamic>> get(
     String uri,
-    Map params,
-  ) async =>
-      this.sendAndReturnDecodedBody('get', uri, params);
+    Map<String, dynamic> params,
+  ) async {
+    return this.sendAndReturnDecodedBody('get', uri, params);
+  }
 
   Future<Map<String, dynamic>> post(
     String uri,
-    Map params,
-  ) async =>
-      this.sendAndReturnDecodedBody('post', uri, params);
+    Map<String, dynamic> params,
+  ) async {
+    return this.sendAndReturnDecodedBody('post', uri, params);
+  }
 
   Future<Map<String, dynamic>> sendAndReturnDecodedBody(
     String method,
     String uri,
-    Map params,
+    Map<String, dynamic> params,
   ) async {
     http.Response response = await this.send(method, uri, params);
 
@@ -47,27 +49,32 @@ class Transmitter {
     return decodedBody;
   }
 
-  Future<http.Response> send(String method, String uri, Map params) async {
+  Future<http.Response> send(
+    String method,
+    String uri,
+    Map<String, dynamic> params,
+  ) async {
     params['mocean-medium'] = 'DART-SDK';
     params['mocean-resp-format'] = 'json';
 
     var response;
     if (method == 'get') {
       response = await this._httpClient.get(
-          "${this._transmitterConfig.baseUrl}/rest/${this._transmitterConfig.version}${uri}?${this.encodeMap(params)}");
+            "${this._transmitterConfig.baseUrl}/rest/${this._transmitterConfig.version}${uri}?${this.encodeMap(params)}",
+          );
     } else {
       response = await this._httpClient.post(
-          "${this._transmitterConfig.baseUrl}/rest/${this._transmitterConfig.version}${uri}",
-          body: params);
+            "${this._transmitterConfig.baseUrl}/rest/${this._transmitterConfig.version}${uri}",
+            body: params,
+          );
     }
 
     return response;
   }
 
-  String encodeMap(Map data) {
-    return data.keys
-        .map((key) =>
-            "${Uri.encodeComponent(key)}=${Uri.encodeComponent(data[key])}")
-        .join("&");
+  String encodeMap(Map<String, dynamic> data) {
+    return data.keys.map((key) {
+      return "${Uri.encodeComponent(key)}=${Uri.encodeComponent(data[key])}";
+    }).join("&");
   }
 }

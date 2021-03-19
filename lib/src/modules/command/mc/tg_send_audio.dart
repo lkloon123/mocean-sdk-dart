@@ -29,7 +29,7 @@ class TgSendAudio extends AbstractMc {
   }
 
   @override
-  List requiredKey() {
+  List<String> requiredKey() {
     return ["from", "to", "content"];
   }
 }

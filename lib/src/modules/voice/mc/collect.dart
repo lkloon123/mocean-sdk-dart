@@ -27,5 +27,5 @@ class Collect extends AbstractMc {
   String action() => 'collect';
 
   @override
-  List requiredKey() => ['event-url', 'min', 'max', 'timeout'];
+  List<String> requiredKey() => ['event-url', 'min', 'max', 'timeout'];
 }

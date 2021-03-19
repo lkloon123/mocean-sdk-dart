@@ -4,7 +4,6 @@ import 'package:moceansdk/src/modules/command/mc/tg_send_audio.dart';
 import 'package:moceansdk/src/modules/command/mc/tg_send_animation.dart';
 import 'package:moceansdk/src/modules/command/mc/tg_send_document.dart';
 import 'package:moceansdk/src/modules/command/mc/tg_send_video.dart';
-import 'package:moceansdk/src/modules/command/mc/tg_send_photo.dart';
 import 'package:moceansdk/src/modules/command/mc/tg_request_contact.dart';
 import 'package:moceansdk/src/modules/command/mc/send_sms.dart';
 

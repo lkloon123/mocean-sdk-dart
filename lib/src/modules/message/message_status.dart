@@ -12,7 +12,7 @@ class MessageStatus extends AbstractClient {
     this.params['mocean-msgid'] = value;
   }
 
-  Future inquiry([Map params]) async {
+  Future<Map<String, dynamic>> inquiry([Map<String, dynamic> params]) async {
     if (params != null) {
       this.create(params);
     }
@@ -22,7 +22,7 @@ class MessageStatus extends AbstractClient {
   }
 
   @override
-  List requiredKey() {
+  List<String> requiredKey() {
     var requiredKey = super.requiredKey();
     requiredKey.addAll(['mocean-msgid']);
     return requiredKey;

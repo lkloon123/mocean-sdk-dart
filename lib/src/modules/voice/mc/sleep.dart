@@ -11,5 +11,5 @@ class Sleep extends AbstractMc {
   String action() => 'sleep';
 
   @override
-  List requiredKey() => ['duration'];
+  List<String> requiredKey() => ['duration'];
 }

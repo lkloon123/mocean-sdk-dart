@@ -25,5 +25,5 @@ class Say extends AbstractMc {
   String action() => 'say';
 
   @override
-  List requiredKey() => ['text', 'language'];
+  List<String> requiredKey() => ['text', 'language'];
 }

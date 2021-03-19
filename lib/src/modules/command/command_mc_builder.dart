@@ -1,10 +1,10 @@
 import 'package:moceansdk/src/modules/command/mc/abstract_mc.dart';
 
 class CommandMcBuilder {
-  List _mc;
+  List<AbstractMc> _mc;
 
-  CommandMcBuilder([mc]) {
-    mc ??= [];
+  CommandMcBuilder([List<AbstractMc> mc]) {
+    mc ??= <AbstractMc>[];
     this._mc = mc;
   }
 
@@ -13,8 +13,8 @@ class CommandMcBuilder {
     return this;
   }
 
-  List build() {
-    var converted = [];
+  List<Map<String, dynamic>> build() {
+    List<Map<String, dynamic>> converted = <Map<String, dynamic>>[];
     for (AbstractMc mc in this._mc) {
       converted.add(mc.requestData);
     }

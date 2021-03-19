@@ -61,7 +61,7 @@ class DummyAuth implements AuthInterface {
   }
 
   @override
-  Map getParams() {
+  Map<String, dynamic> getParams() {
     return {};
   }
 }

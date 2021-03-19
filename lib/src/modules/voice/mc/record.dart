@@ -7,5 +7,5 @@ class Record extends AbstractMc {
   String action() => 'record';
 
   @override
-  List requiredKey() => [];
+  List<String> requiredKey() => [];
 }

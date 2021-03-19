@@ -19,5 +19,5 @@ class Play extends AbstractMc {
   String action() => 'play';
 
   @override
-  List requiredKey() => ['file'];
+  List<String> requiredKey() => ['file'];
 }

@@ -36,7 +36,7 @@ class Voice extends AbstractClient {
     }
   }
 
-  Future call([Map params]) async {
+  Future<Map<String, dynamic>> call([Map<String, dynamic> params]) async {
     if (params != null) {
       if (params.containsKey('mocean-command')) {
         var mc = params['mocean-command'];
@@ -51,7 +51,7 @@ class Voice extends AbstractClient {
     return await this.transmitter.post('/voice/dial', this.params);
   }
 
-  Future hangup(String callUuid) async {
+  Future<Map<String, dynamic>> hangup(String callUuid) async {
     this._isHangup = true;
     this.create({'mocean-call-uuid': callUuid});
     this.isRequiredFieldSet();
@@ -75,7 +75,7 @@ class Voice extends AbstractClient {
   }
 
   @override
-  List requiredKey() {
+  List<String> requiredKey() {
     var requiredKey = super.requiredKey();
 
     if (this._isHangup || this._isRecording) {

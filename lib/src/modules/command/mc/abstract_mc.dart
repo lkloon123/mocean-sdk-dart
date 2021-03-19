@@ -2,18 +2,19 @@ import 'package:moceansdk/moceansdk.dart';
 import 'package:moceansdk/src/utils.dart';
 
 abstract class AbstractMc {
-  Map params;
+  Map<String, dynamic> params;
 
-  AbstractMc([params]) {
-    params ??= {};
+  AbstractMc([Map<String, dynamic> params]) {
+    params ??= Map<String, dynamic>();
     this.params = params;
   }
 
-  Map get requestData {
+  Map<String, dynamic> get requestData {
     for (var required in this.requiredKey()) {
       if (Utils.isNullOrEmpty(this.params[required])) {
         throw RequiredFieldException(
-            "${required} is mandatory field, can't be empty (${this.runtimeType.toString()})");
+          "${required} is mandatory field, can't be empty (${this.runtimeType.toString()})",
+        );
       }
     }
 
@@ -21,7 +22,7 @@ abstract class AbstractMc {
     return this.params;
   }
 
-  List requiredKey();
+  List<String> requiredKey();
 
   String action();
 }

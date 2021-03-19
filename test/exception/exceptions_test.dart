@@ -13,7 +13,7 @@ main() {
       );
 
       try {
-        await transmitterMock.get('/test', {});
+        await transmitterMock.get('/test', <String, dynamic>{});
         fail('response with error passed without throw');
       } on MoceanErrorException catch (e) {
         expect(
