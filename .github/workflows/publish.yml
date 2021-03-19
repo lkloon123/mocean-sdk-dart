@@ -1,0 +1,17 @@
+name: publish
+on:
+  release
+    types: [created]
+
+jobs:
+  publishing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sdk: [2.1.x, 2.2.x, 2.3.x, 2.4.x, stable]
+    
+    steps:
+      - uses: actions/checkout@v1
+      - uses: dart-lang/setup-dart@v0.1
+        with:
+          sdk: ${{ matrix.sdk }}

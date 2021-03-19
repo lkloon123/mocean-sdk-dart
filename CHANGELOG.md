@@ -1,3 +1,8 @@
+## [1.2.1](http://github.com/MoceanAPI/mocean-sdk-dart/compare/1.2.0...1.2.1)
+- Added new verify method - Telegram
+- Added new module command. Command module use for send SMS and Telegram message in a single http request.
+
+
 ## [1.1.1](http://github.com/MoceanAPI/mocean-sdk-dart/compare/1.1.0...1.1.1)
 
 - Fix code analytics sugguestions [4ddb086](https://gitub.com/MoceanAPI/mocean-sdk-dart/commit/4ddb086c8740ef9ef5dca79ba0db3bb69f3b954d)

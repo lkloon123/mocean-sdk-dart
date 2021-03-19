@@ -1,7 +1,5 @@
 name: moceansdk
 version: 1.2.1
-authors:
-  - Micro Ocean Technologies Sdn Bhd <support@moceanapi.com>
 homepage: https://moceanapi.com
 repository: https://github.com/MoceanAPI/mocean-sdk-dart
 description: SDK Library Dart to send SMS for FREE using MoceanAPI sms solution.
